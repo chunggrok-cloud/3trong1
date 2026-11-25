@@ -14,6 +14,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Giải nén src.zip
+        run: |
+          if [ -f src.zip ]; then unzip -q -o src.zip; fi
+          ls
+
       - name: Tính số phiên bản
         run: echo "VERSION_CODE=$((GITHUB_RUN_NUMBER + 100))" >> "$GITHUB_ENV"
 
