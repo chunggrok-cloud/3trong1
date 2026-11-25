@@ -11,10 +11,11 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      VERSION_CODE: ${{ github.run_number + 100 }}
     steps:
       - uses: actions/checkout@v4
+
+      - name: Tính số phiên bản
+        run: echo "VERSION_CODE=$((GITHUB_RUN_NUMBER + 100))" >> "$GITHUB_ENV"
 
       - uses: actions/setup-java@v4
         with:
